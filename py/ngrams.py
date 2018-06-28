@@ -1,5 +1,7 @@
 #!/usr/local/bin/python3
 """
+    NOTE: This is being converted to GO! See main.go
+    
     Usage: ./bigrams.py text.txt > output.txt
 
     This takes the content of a file converts it to a list of characters
