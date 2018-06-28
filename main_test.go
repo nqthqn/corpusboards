@@ -3,8 +3,6 @@ package main
 import (
 	"reflect"
 	"testing"
-
-	norm "golang.org/x/text/unicode/norm"
 )
 
 func TestNgrams(t *testing.T) {
@@ -38,20 +36,37 @@ func TestNgrams(t *testing.T) {
 }
 
 // nfc, nfd
-func TestTidy(t *testing.T) {
-	ds := []struct {
-		s    string
-		want string
-		f    norm.Form
-	}{
-		{"̈ʋ̈baíä", "̈ʋ̈baíä", norm.NFD},
-		{"̈ʋ̈baíä", "̈ʋ̈baíä", norm.NFC},
-	}
+// func TestTidy(t *testing.T) {
+// 	ds := []struct {
+// 		s    string
+// 		want string
+// 		f    norm.Form
+// 	}{
+// 		{"̈ʋ̈baíä", "̈ʋ̈baíä", norm.NFD},
+// 		{"̈ʋ̈baíä", "̈ʋ̈baíä", norm.NFC},
+// 	}
 
-	for i, d := range ds {
-		got := normalize(d.s, d.f)
-		if got != d.want {
-			t.Errorf("TestTidy %d: got %v, want %v", i, got, d.want)
-		}
-	}
-}
+// 	for i, d := range ds {
+// 		got := normalize(d.s, d.f)
+// 		if got != d.want {
+// 			t.Errorf("TestTidy %d: got %v, want %v", i, got, d.want)
+// 		}
+// 	}
+// }
+
+// TODO test the sorting function
+// func TestOrderByOccuranceCount(t *testing.T) {
+// 	ds := []struct {
+// 		gs   map[string]int
+// 		want Ngrams
+// 	}{
+// 		{map[string]int{"a": 1, "b": 2}, Ngrams{{"b", 2}, {"a", 1}}},
+// 	}
+
+// 	for i, d := range ds {
+// 		got := orderByOccuranceCount(d.gs)
+// 		if got != d.want {
+// 			t.Errorf("TestOrderByOccuranceCount %d: got %v, want %v", i, got, d.want)
+// 		}
+// 	}
+// }
